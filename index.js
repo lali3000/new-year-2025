@@ -1,7 +1,8 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-
+const cors = require('cors');
+app.use(cors());
 const PORT = 3000;
 
 // Path to the count file
