@@ -43,45 +43,20 @@
       color: #00ffcc;
       text-shadow: 0 0 10px #00ffcc, 0 0 20px #0099ff;
     }
+
+    .counter {
+      font-family: 'Arial', sans-serif;
+      font-size: 1rem;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
   <h1>🎉 Happy New Year 🎉</h1>
   <div class="year">2025</div>
   <div class="team">Webartsol and PW Team</div>
-
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script>
-    function launchFallingConfetti() {
-      setInterval(() => {
-        confetti({
-          particleCount: 100,
-          angle: 90,
-          spread: 45,
-          startVelocity: 25,
-          origin: { x: Math.random(), y: 0 },
-          colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'],
-        });
-      }, 800); // Falling confetti every 800ms
-    }
-
-    function launchExplodingConfetti() {
-      setInterval(() => {
-        confetti({
-          particleCount: 150,
-          spread: 360,
-          startVelocity: 40,
-          origin: { x: Math.random(), y: Math.random() - 0.2 },
-          colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'],
-        });
-      }, 1200); // Explosions every 1.2 seconds
-    }
-
-    // Start both animations
-    window.onload = () => {
-      launchFallingConfetti();
-      launchExplodingConfetti();
-    };
-  </script>
+  <div class="counter">
+    <img src="https://komarev.com/ghpvc/?username=lali3000&label=Page%20Visits&color=0e75b6&style=flat" alt="Visit Counter">
+  </div>
 </body>
 </html>
