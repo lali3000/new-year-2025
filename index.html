@@ -1,106 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy New Year 2025</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy New Year 2025</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        color: #fff;
+        font-family: "Arial", sans-serif;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
 
-    h1 {
-      font-family: 'Brush Script MT', cursive;
-      font-size: 4rem;
-      text-align: center;
-      margin: 0;
-      color: #ffcc00;
-      text-shadow: 0 0 20px #ff6600, 0 0 30px #ff0000, 0 0 40px #ff6600;
-    }
+      h1 {
+        font-family: "Brush Script MT", cursive;
+        font-size: 4rem;
+        text-align: center;
+        margin: 0;
+        color: #ffcc00;
+        text-shadow: 0 0 20px #ff6600, 0 0 30px #ff0000, 0 0 40px #ff6600;
+      }
 
-    .year {
-      font-family: 'Brush Script MT', cursive;
-      font-size: 3rem;
-      margin: 20px 0;
-      color: #fff;
-      text-shadow: 0 0 10px #00ff00, 0 0 20px #00ccff, 0 0 30px #ff00ff;
-    }
+      .year {
+        font-family: "Brush Script MT", cursive;
+        font-size: 3rem;
+        margin: 20px 0;
+        color: #fff;
+        text-shadow: 0 0 10px #00ff00, 0 0 20px #00ccff, 0 0 30px #ff00ff;
+      }
 
-    .team {
-      font-family: 'Arial', sans-serif;
-      font-size: 1.5rem;
-      margin-top: 20px;
-      color: #00ffcc;
-      text-shadow: 0 0 10px #00ffcc, 0 0 20px #0099ff;
-    }
-  </style>
-</head>
-<body>
-  <h1>🎉 Happy New Year 🎉</h1>
-  <div class="year">2025</div>
-  <div class="team">Webartsol and PW Team</div>
-  <div id="count"></div>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script>
-    function launchFallingConfetti() {
-      setInterval(() => {
-        confetti({
-          particleCount: 100,
-          angle: 90,
-          spread: 45,
-          startVelocity: 25,
-          origin: { x: Math.random(), y: 0 },
-          colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'],
-        });
-      }, 800); // Falling confetti every 800ms
-    }
+      .team {
+        font-family: "Arial", sans-serif;
+        font-size: 1.5rem;
+        margin-top: 20px;
+        color: #00ffcc;
+        text-shadow: 0 0 10px #00ffcc, 0 0 20px #0099ff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎉 Happy New Year 🎉</h1>
+    <div class="year">2025</div>
+    <div class="team">Webartsol and PW Team</div>
+    <div id="count"></div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+      function launchFallingConfetti() {
+        setInterval(() => {
+          confetti({
+            particleCount: 100,
+            angle: 90,
+            spread: 45,
+            startVelocity: 25,
+            origin: { x: Math.random(), y: 0 },
+            colors: ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff"],
+          });
+        }, 800); // Falling confetti every 800ms
+      }
 
-    function launchExplodingConfetti() {
-      setInterval(() => {
-        confetti({
-          particleCount: 150,
-          spread: 360,
-          startVelocity: 40,
-          origin: { x: Math.random(), y: Math.random() - 0.2 },
-          colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'],
-        });
-      }, 1200); // Explosions every 1.2 seconds
-    }
-    async function updateCountDiv() {
-        const countDiv = document.getElementById('count'); // Get the count div
-        const apiUrl = 'https://symmetrical-computing-machine.onrender.com/count';
+      function launchExplodingConfetti() {
+        setInterval(() => {
+          confetti({
+            particleCount: 150,
+            spread: 360,
+            startVelocity: 40,
+            origin: { x: Math.random(), y: Math.random() - 0.2 },
+            colors: ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff"],
+          });
+        }, 1200); // Explosions every 1.2 seconds
+      }
+      async function updateCountDivWithCors() {
+        const countDiv = document.getElementById("count"); // Get the count div
+        const apiUrl = "https://new-year-2025-6zcz.onrender.com/count";
 
         try {
-            const response = await fetch(apiUrl); // Fetch data from the API
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
+          const response = await fetch(apiUrl, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              // Include other headers if necessary
+            },
+          });
 
-            const data = await response.json(); // Parse the JSON response
-            countDiv.textContent = data.count; // Update the div with the count
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json(); // Parse the JSON response
+          countDiv.textContent = data.count; // Update the div with the count
         } catch (error) {
-            console.error('Error fetching count:', error);
-            countDiv.textContent = 'Error fetching count'; // Display an error message
+          console.error("Error fetching count:", error);
+          countDiv.textContent = "Error fetching count"; // Display an error message
+
+          // If the error is CORS-related, guide the user
+          if (error.message.includes("CORS")) {
+            console.error("CORS error: Ensure the server has CORS enabled.");
+          }
         }
-    }
+      }
 
-
-    // Start both animations
-    window.onload = () => {
-      launchFallingConfetti();
-      launchExplodingConfetti();
-      updateCountDiv();
-    };
-  </script>
-</body>
+      // Start both animations
+      window.onload = () => {
+        launchFallingConfetti();
+        launchExplodingConfetti();
+        updateCountDiv();
+      };
+    </script>
+  </body>
 </html>
